@@ -20,6 +20,11 @@ const spotifyApiOptions = {
   clientSecret: process.env.CLIENT_SECRET,
 }
 
+app.get("/healthz", (req, res)=>{
+  res.setHeader('Content-Type', 'text/html');
+  res.send(`<h2>Server working fine as of ${new Date()}</h2>`);
+})
+
 app.post("/refresh", async(req, res) => {
   const refreshToken = req.body.refreshToken
   spotifyApiOptions.refreshToken = refreshToken
@@ -60,4 +65,6 @@ app.post("/lyrics", async (req, res) => {
   res.json({ lyrics })
 })
 
-app.listen(3001)
+app.listen(process.env.PORT, ()=>{
+  console.log(`Server is working on port ${process.env.PORT}`);
+})
