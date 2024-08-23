@@ -6,7 +6,11 @@ const lyricsFinder = require("lyrics-finder")
 const SpotifyWebApi = require("spotify-web-api-node")
 
 const app = express()
-app.use(cors())
+app.use(cors(
+  {
+    origin: process.env.REDIRECT_URI
+  }
+))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
