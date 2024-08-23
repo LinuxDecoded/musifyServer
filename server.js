@@ -8,7 +8,7 @@ const SpotifyWebApi = require("spotify-web-api-node")
 const app = express()
 app.use(cors(
   {
-    origin: process.env.REDIRECT_URI
+    origin: process.env.CLIENT_URI
   }
 ))
 app.use(bodyParser.json())
